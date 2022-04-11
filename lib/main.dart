@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nike_shop/data/entity/product.dart';
+import 'package:nike_shop/data/repo/product_repo.dart';
+import 'package:nike_shop/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,21 +13,41 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    productRepository.getAll(ProductSort.latest).then((value) {
+      debugPrint(value.toString());
+    }).catchError((e) {
+      debugPrint(e.toString());
+    });
+
+    productRepository.search("کفش").then((value) {
+      debugPrint(value.toString());
+    }).catchError((e) {
+      debugPrint(e.toString());
+    });
+    const defaultTextStyle = TextStyle(
+      fontFamily: 'IranYekan',
+      color: lightThemeColors.primaryTextColor,
+    );
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        textTheme: TextTheme(
+          bodyText2: defaultTextStyle,
+          caption: defaultTextStyle.copyWith(
+            color: lightThemeColors.secondaryTextColor,
+          ),
+          headline6: defaultTextStyle.copyWith(fontWeight: FontWeight.bold),
+        ),
+        colorScheme: const ColorScheme.light(
+          primary: lightThemeColors.primaryColor,
+          secondary: lightThemeColors.secondaryColor,
+          onSecondary: Colors.white,
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const Directionality(
+          textDirection: TextDirection.rtl,
+          child: MyHomePage(title: 'فروشگاه نایک')),
     );
   }
 }
@@ -96,7 +119,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'تست فونت',
+            ),
+            Text(
+              'تست فونت',
+              style: Theme.of(context).textTheme.caption,
             ),
             Text(
               '$_counter',
