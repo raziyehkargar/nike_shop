@@ -40,6 +40,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // This is the theme of your application.
         textTheme: TextTheme(
+          subtitle1: defaultTextStyle.copyWith(
+              color: lightThemeColors.secondaryTextColor),
+          button: defaultTextStyle,
           bodyText2: defaultTextStyle,
           caption: defaultTextStyle.copyWith(
             color: lightThemeColors.secondaryTextColor,
@@ -51,6 +54,11 @@ class MyApp extends StatelessWidget {
           secondary: lightThemeColors.secondaryColor,
           onSecondary: Colors.white,
         ),
+        // textButtonTheme: TextButtonThemeData(
+        //   style: ButtonStyle(
+        //     textStyle: MaterialStateProperty.all(defaultTextStyle),
+        //   ),
+        // ),
       ),
       home: const Directionality(
         textDirection: TextDirection.rtl,
