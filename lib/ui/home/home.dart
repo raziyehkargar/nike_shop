@@ -139,6 +139,7 @@ class _HorizontalProductList extends StatelessWidget {
             ),
             itemBuilder: (context, index) => ProductItem(
               product: products[index],
+              borderRadius: BorderRadius.circular(12),
             ),
           ),
         )
