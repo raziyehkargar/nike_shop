@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nike_shop/data/entity/product.dart';
-import 'package:nike_shop/data/repo/banner_repository.dart';
-import 'package:nike_shop/data/repo/product_repository.dart';
 import 'package:nike_shop/theme.dart';
 import 'package:nike_shop/ui/home/home.dart';
 
@@ -15,25 +12,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    bannerRepository.getAll().then((value) {
-      debugPrint(value.toString());
-    }).catchError((e) {
-      debugPrint(e.toString());
-    });
-    productRepository.getAll(ProductSort.latest).then((value) {
-      debugPrint(value.toString());
-    }).catchError((e) {
-      debugPrint(e.toString());
-    });
+    // bannerRepository.getAll().then((value) {
+    //   debugPrint(value.toString());
+    // }).catchError((e) {
+    //   debugPrint(e.toString());
+    // });
+    // productRepository.getAll(ProductSort.latest).then((value) {
+    //   debugPrint(value.toString());
+    // }).catchError((e) {
+    //   debugPrint(e.toString());
+    // });
 
-    productRepository.search("کفش").then((value) {
-      debugPrint(value.toString());
-    }).catchError((e) {
-      debugPrint(e.toString());
-    });
+    // productRepository.search("کفش").then((value) {
+    //   debugPrint(value.toString());
+    // }).catchError((e) {
+    //   debugPrint(e.toString());
+    // });
     const defaultTextStyle = TextStyle(
       fontFamily: 'IranYekan',
-      color: lightThemeColors.primaryTextColor,
+      color: LightThemeColors.primaryTextColor,
     );
     return MaterialApp(
       title: 'Flutter Demo',
@@ -41,17 +38,20 @@ class MyApp extends StatelessWidget {
         // This is the theme of your application.
         textTheme: TextTheme(
           subtitle1: defaultTextStyle.copyWith(
-              color: lightThemeColors.secondaryTextColor),
+              color: LightThemeColors.secondaryTextColor),
           button: defaultTextStyle,
           bodyText2: defaultTextStyle,
           caption: defaultTextStyle.copyWith(
-            color: lightThemeColors.secondaryTextColor,
+            color: LightThemeColors.secondaryTextColor,
           ),
-          headline6: defaultTextStyle.copyWith(fontWeight: FontWeight.bold),
+          headline6: defaultTextStyle.copyWith(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
         ),
         colorScheme: const ColorScheme.light(
-          primary: lightThemeColors.primaryColor,
-          secondary: lightThemeColors.secondaryColor,
+          primary: LightThemeColors.primaryColor,
+          secondary: LightThemeColors.secondaryColor,
           onSecondary: Colors.white,
         ),
         // textButtonTheme: TextButtonThemeData(

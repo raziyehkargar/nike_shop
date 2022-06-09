@@ -21,9 +21,9 @@ class ProductRemoteDataSource
 
     final List<ProductEntity> products = [];
 
-    (response.data as List).forEach((element) {
-      products.add(ProductEntity.fromJson(element));
-    });
+    for (var element in (response.data as List)) {
+      products.add(ProductEntity.fromJson(element)); // element is a json object
+    }
     return products;
   }
 
@@ -34,9 +34,9 @@ class ProductRemoteDataSource
 
     final List<ProductEntity> products = [];
 
-    (response.data as List).forEach((element) {
+    for (var element in (response.data as List)) {
       products.add(ProductEntity.fromJson(element));
-    });
+    }
     return products;
   }
 }

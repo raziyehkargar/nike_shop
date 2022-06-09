@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nike_shop/common/utils.dart';
 import 'package:nike_shop/data/entity/product.dart';
 import 'package:nike_shop/ui/custome_widgets/image.dart';
+import 'package:nike_shop/ui/product/comment/comment-list.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final ProductEntity product;
@@ -11,6 +12,10 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // commentRepository
+    //     .getAll(productId: product.id)
+    //     .then((value) => debugPrint(value.toString()))
+    //     .catchError((e) => debugPrint(e.toString()));
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -86,9 +91,10 @@ class ProductDetailScreen extends StatelessWidget {
                           TextButton(
                               onPressed: () {}, child: const Text('ثبت نظر')),
                         ],
-                      )
+                      ),
                     ]),
-              ))
+              )),
+              CommentList(productId: product.id),
             ],
           )),
     );

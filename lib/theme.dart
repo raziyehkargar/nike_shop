@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class lightThemeColors {
+class LightThemeColors {
   //Primary color
   static const primaryColor = Color(0xff217CF3);
 

@@ -6,12 +6,12 @@ abstract class IBannerDataSource {
   Future<List<BannerEntity>> getAll();
 }
 
-class RemoteBannerDataSource
+class BannerRemoteDataSource
     with httpResponseValidator
     implements IBannerDataSource {
   final Dio httpClient;
 
-  RemoteBannerDataSource(this.httpClient);
+  BannerRemoteDataSource(this.httpClient);
 
   @override
   Future<List<BannerEntity>> getAll() async {
@@ -19,9 +19,9 @@ class RemoteBannerDataSource
     validateResponse(response);
 
     List<BannerEntity> banners = [];
-    (response.data as List).forEach((json) {
+    for (var json in (response.data as List)) {
       banners.add(BannerEntity.fromJson(json));
-    });
+    }
     return banners;
   }
 }
